@@ -1,0 +1,23 @@
+<%- include('header'); %>
+    <!-- login form -->
+    <div class="container-fluid">
+      <h1 class="login-signup-title">Signup</h1>
+      <div class="row login-signup-content">
+        <div class="col signup-content">
+          <form action="index.html" method="post">
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" id="email" aria-describedby="email-help">
+              <small id="email-help" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password">
+            </div>
+            <button type="submit" class="btn btn-lg first-button signup-button "><i class="fas fa-lock"></i> Create new account</button>
+            <a href="login.html" class="back-to-login">Back to login</a>
+          </form>
+        </div>
+      </div>
+    </div>
+<%- include('footer'); %>
