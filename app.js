@@ -17,6 +17,10 @@ app.get("/login", (req, res)=>{
     res.render("login_form");
 });
 
+app.get("/sign-up", (req, res)=>{
+    res.render("sign_up");
+});
+
 
 app.listen(3000, ()=>{
     console.log("Server started on port 3000....");

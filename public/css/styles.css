@@ -183,100 +183,71 @@ footer {
     color: #B3B3B3;
 }
 
-/* popup login css */
-.popup-overlay {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100vh;
-    z-index: 1;
-    background: rgba(0, 0, 0, 0.5);
-    display: none;
-}
-
-.popup {
-    position: absolute;
-    top: -150%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.15);
-    width: 500px;
-    height: 470px;
-    background: #fff;
-    padding: 2%;
-    z-index: 2;
-    opacity: 0;
-    border-bottom: solid 4px #ca0000;
-    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.2);
-    transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
-}
-
-.header {
+/* login and some signup page specific css */
+.login-signup-title {
     font-family: 'Poppins', sans-serif;
-    text-align: center;
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-weight: 600;
-    color: #000;
-    margin: 5% 0 7%;
-    ;
-}
-
-.popup .form .element {
-    padding: 2% 3%;
-    margin-bottom: 0;
-}
-
-.popup .form .element input {
-    width: 100%;
-    padding: 2%;
-    box-sizing: border-box;
-    margin-bottom: 2%;
-    margin-left: 0;
-    margin-right: 0;
-    border: 2px solid #e9eaea;
-    color: #3e3e40;
-    font-size: 1rem;
-    outline: none;
-    transform: all 0.5s ease;
-}
-
-.popup .form .element input:focus {
-    border: 2px solid #3e3e40;
-}
-
-.popup .form .element a {
-    color: #B3B3B3;
-    text-decoration: none;
-}
-
-.popup .form .login-button {
-    padding: 2% 2%;
-}
-
-.popup .form .login-button button {
-    box-sizing: border-box;
-    width: 100%;
-    margin-right: 2%;
     text-transform: uppercase;
-    border-color: #ca0000;
-    border-radius: 0;
-    font-size: 15px;
-    font-weight: 600;
+    padding: 3% 0 0 0;
+    margin-left: 10%;
+}
+
+.login-signup-content {
+    background-color: #333333;
+    color: #fff;
+    padding: 5% 7%;
+}
+
+.forgot-password {
     cursor: pointer;
-    background: #ca0000;
     color: #fff;
 }
 
-.popup .form .login-button button:hover {
-    background-color: #A41D00;
+.forgot-password:hover {
+    color: #ca0000;
+    text-decoration: none;
 }
 
-body.showLoginForm .popup-overlay {
+.login-button {
     display: block;
+    margin: 0 auto;
 }
 
-body.showLoginForm .popup {
-    top: 50%;
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+.create-account {
+    background-color: #000;
+    text-align: center;
+    padding: 5%;
+    margin: auto;
+}
+
+.create-account-button {
+    margin-top: 6%;
+}
+
+@media (max-width: 992px) {
+    .login-button {
+        margin-bottom: 7%;
+    }
+}
+
+/* signup page specific css */
+.signup-content {
+    padding: 0 25%;
+}
+
+.signup-button {
+    display: block;
+    margin: 35px auto 15px;
+}
+
+.back-to-login {
+    color: #fff;
+    display: block;
+    text-align: center;
+}
+
+.back-to-login:hover {
+    color: #ca0000;
+    text-decoration: none;
 }
