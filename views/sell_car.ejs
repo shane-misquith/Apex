@@ -13,11 +13,11 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <label for="name">Your Name</label>
-                        <input type="text" id="name" class="form-control" required>
+                        <input type="text" id="name" class="form-control" placeholder="Full name" required>
                     </div>
                     <div class="col-lg-6">
                         <label for="state">State</label>
-                        <select id="state" class="form-control">
+                        <select id="state" class="form-control" required>
                             <option selected value="" disabled>Select Your State</option>
                             <option value="Alabama">Alabama</option>
                             <option value="Alaska">Alaska</option>
@@ -78,11 +78,11 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <label for="city">City</label>
-                        <input type="text" id="city" class="form-control" required>
+                        <input type="text" id="city" class="form-control" placeholder="Eg: Seattle" required>
                     </div>
                     <div class="col-lg-6">
                         <label for="zipcode">Zip Code</label>
-                        <input type="text" class="form-control" id="zipcode" pattern="[1-9]{1}[0-9]{4}" required>
+                        <input type="text" class="form-control" id="zipcode" pattern="\d{5}(-\d{4})?" placeholder="Eg: 00000 or 00000-0000"required>
                     </div>
                 </div>
             </div>
@@ -91,11 +91,11 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <label for="phone">Phone Number</label>
-                        <input type="tel" class="form-control" id="phone" pattern="[1-9]{1}[0-9]{9}" required>
+                        <input type="tel" class="form-control" id="phone" pattern="[0-9]{10}" placeholder="Eg: 1234567890" required>
                     </div>
                     <div class="col-lg-6">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" required>
+                        <input type="email" class="form-control" id="email" placeholder="e-mail" required>
                     </div>
                 </div>
             </div>
@@ -106,15 +106,15 @@
                 <div class="row">
                     <div class="col-lg-4 col-sm-6">
                         <label for="make">Make</label>
-                        <input type="text" class="form-control" id="make" required>
+                        <input type="text" class="form-control" id="make" placeholder="Eg: Shelby" required>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <label for="model">Model</label>
-                        <input type="text" class="form-control" id="model" required>
+                        <input type="text" class="form-control" id="model" placeholder="Eg: Cobra 427" required>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <label for="model-year">Model Year</label>
-                        <input type="text" class="form-control" id="model-year" required>
+                        <input type="text" class="form-control" id="model-year" placeholder="Eg: 1966" required>
                     </div>
                 </div>
             </div>
@@ -123,15 +123,15 @@
                 <div class="row">
                     <div class="col-lg-4 col-sm-6">
                         <label for="engine">Engine</label>
-                        <input type="text" class="form-control" id="engine" required>
+                        <input type="text" class="form-control" id="engine" placeholder="Eg: 4.7L Ford V8" required>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <label for="transmission">Transmission</label>
-                        <input type="text" class="form-control" id="transmission" required>
+                        <input type="text" class="form-control" id="transmission" placeholder="Manual" required>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <label for="milage">Milage</label>
-                        <input type="number" class="form-control" id="milage" required>
+                        <input type="number" class="form-control" id="milage" placeholder="KM" required>
                     </div>
                 </div>
             </div>
