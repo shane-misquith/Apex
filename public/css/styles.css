@@ -23,9 +23,9 @@ footer {
 }
 
 /* .btn {
-    border-radius: 0;
+  border-radius: 0;
 } */
-#select-category {
+#select-category, #hero-section {
     padding: 7% 10%;
 }
 
@@ -37,14 +37,6 @@ footer {
 }
 
 /* header and navigation bar content */
-.header-logo {
-    text-align: center;
-}
-
-.header-logo img {
-    width: 10%;
-}
-
 .navbar {
     text-align: center;
     margin-top: 0;
@@ -76,7 +68,7 @@ footer {
 }
 
 .navbar .navbar-brand:hover {
-    color: #910a0a;
+    color: #ca0000;
 }
 
 /* hero section */
@@ -84,34 +76,37 @@ footer {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     padding: .5% 2%;
-    margin: 20% 2% 0 0;
+    margin: 14% 2% 0 0;
 }
 
 .hero-section {
-    background-image: url('../images/hero-image.jpg');
-    background-repeat: no-repeat;
+    background: url('../images/hero-image.jpg') no-repeat center center fixed;
+    -webkit-transform-style: preserve-3d;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-    background-attachment: fixed;
+    /* background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; */
     min-height: 700px;
-    padding: 5% 25% 5% 10%;
 }
 
-.hero-title {
+.hero-title, .hero-subtitle {
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
     text-shadow: 3px 2px 4px rgba(0, 0, 0, 1);
     font-weight: 600;
+}
+
+.hero-title {
     font-size: 3.5rem;
     color: #fff;
-    padding: 10% 0 0 0;
+    padding: 5% 0 0 0;
     margin: 0;
 }
 
 .hero-subtitle {
-    font-family: 'Poppins', sans-serif;
-    text-transform: uppercase;
-    text-shadow: 3px 2px 4px rgba(0, 0, 0, 1);
-    font-weight: 600;
     font-size: 2rem;
     color: #ca0000;
 }
@@ -175,12 +170,27 @@ footer {
 }
 
 .social-icons a {
-    padding: 0 1% 0;
+    padding: 0 1% 0 1%;
+    padding: 0 18px 0;
     color: #fff;
 }
 
 .social-contacts small {
     color: #B3B3B3;
+}
+
+.social-icons .fa-instagram:hover {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.social-icons .fa-twitter:hover {
+    color: #1DA1F2;
+}
+
+.social-icons .fa-facebook-f:hover {
+    color: #4267B2;
 }
 
 /* login and some signup page specific css */
@@ -190,13 +200,21 @@ footer {
     font-weight: 600;
     text-transform: uppercase;
     padding: 3% 0 0 0;
+    /* text-align: center; */
+}
+
+.login-title-specific {
     margin-left: 10%;
 }
 
 .login-signup-content {
     background-color: #333333;
     color: #fff;
-    padding: 5% 7%;
+    padding: 3% 10%;
+}
+
+#sign-up {
+    text-align: center;
 }
 
 .forgot-password {
@@ -210,8 +228,11 @@ footer {
 }
 
 .login-button {
+    font-size: 1rem;
+    padding: 8px 5%;
     display: block;
     margin: 0 auto;
+    text-transform: uppercase;
 }
 
 .create-account {
@@ -232,13 +253,20 @@ footer {
 }
 
 /* signup page specific css */
+.signup-title-specific {
+    text-align: center;
+}
+
 .signup-content {
     padding: 0 25%;
 }
 
 .signup-button {
+    font-size: 1rem;
+    padding: 8px 5%;
     display: block;
     margin: 35px auto 15px;
+    text-transform: uppercase;
 }
 
 .back-to-login {
@@ -250,4 +278,114 @@ footer {
 .back-to-login:hover {
     color: #ca0000;
     text-decoration: none;
+}
+
+/* sell car page css */
+.sell-car-form {
+    padding: 6% 25%;
+    background-color: #333333;
+    color: #fff;
+}
+
+@media (min-width: 100px) and (max-width: 1200px) {
+    .sell-car-form {
+        padding: 6% 2%;
+    }
+
+    #navigation-bar {
+        padding: 0 2%;
+    }
+}
+
+.sell-car-form label, .sell-car-submit {
+    font-family: 'Roboto', sans-serif;
+}
+
+.sell-car-title, .sell-car-info {
+    margin-bottom: 5%;
+}
+
+.sell-car-title h1, .sell-car-info h3 {
+    padding-bottom: 4%;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.sell-car-info h3 {
+    display: inline-block;
+    padding-left: 2%;
+}
+
+.sell-car-info {
+    padding: 4%;
+    background-color: #000;
+    border-radius: 0.5rem;
+}
+
+.span-decor {
+    display: inline-block;
+    width: 0.75rem;
+    height: 1.125rem;
+    background: #ca0000;
+    border-radius: 0 4px 4px 0;
+}
+
+.sell-car-submit {
+    font-size: 1.1rem;
+    padding: 8px 5%;
+    background: #ca0000;
+    border: none;
+    text-transform: uppercase;
+}
+
+.sell-car-submit:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* upload photos section */
+.drop-zone {
+    max-width: 12.5rem;
+    height: 9.375rem;
+    padding: 0.625;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #cccccc;
+    border: 4px dashed #ca0000;
+    border-radius: 10px;
+}
+
+.drop-zone--over {
+    border-style: solid;
+}
+
+.drop-zone__input {
+    display: none;
+}
+
+.drop-zone__thumb {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #ccc;
+    background-size: cover;
+    position: relative;
+}
+
+.drop-zone__thumb::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px 0;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.75);
+    font-size: 0.875rem;
+    text-align: center;
 }

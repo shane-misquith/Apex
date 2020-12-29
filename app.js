@@ -21,6 +21,10 @@ app.get("/sign-up", (req, res)=>{
     res.render("sign_up");
 });
 
+app.get("/sell_car", (req, res)=>{
+    res.render("sell_car");
+});
+
 
 app.listen(3000, ()=>{
     console.log("Server started on port 3000....");
