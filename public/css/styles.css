@@ -344,6 +344,11 @@ footer {
 }
 
 /* upload photos section */
+
+.drop-photo-cols {
+  margin-bottom: 20px;
+}
+
 .drop-zone {
     max-width: 12.5rem;
     height: 9.375rem;

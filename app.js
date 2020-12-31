@@ -4,6 +4,7 @@ const app = express()
 //body-parser
 app.use(express.json());
 app.use(express.urlencoded());
+
 //EJS
 app.use(express.static("public"));
 app.set("view engine", "ejs");
