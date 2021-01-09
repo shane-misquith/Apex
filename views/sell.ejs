@@ -4,23 +4,20 @@
         <h1>Tell us about your car</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     </div>
-
-
-
     <!-- seller information section of the form -->
-    <form action="/sell_car" method="post">
-        <div class="sell-car-info">
-            <span class="span-decor"></span>
-            <h3>Your Info</h3>
+    <form  action="/sell_car.ejs" method="post">
+    <div class="sell-car-info">
+        <span class="span-decor"></span>
+        <h3>Your Info</h3>
             <div class="form-group">
                 <div class="row">
                     <div class="col-lg-6">
                         <label for="name">Your Name</label>
-                        <input type="text" name="name" class="form-control" placeholder="Full name" required>
+                        <input type="text" id="name" class="form-control" placeholder="Full name" required>
                     </div>
                     <div class="col-lg-6">
                         <label for="state">State</label>
-                        <select name="state" class="form-control" required>
+                        <select id="state" class="form-control" required>
                             <option selected value="" disabled>Select Your State</option>
                             <option value="Alabama">Alabama</option>
                             <option value="Alaska">Alaska</option>
@@ -81,11 +78,11 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <label for="city">City</label>
-                        <input type="text" name="city" class="form-control" placeholder="Eg: Seattle" required>
+                        <input type="text" id="city" class="form-control" placeholder="Eg: Seattle" required>
                     </div>
                     <div class="col-lg-6">
                         <label for="zipcode">Zip Code</label>
-                        <input type="text" class="form-control" name="zipcode" pattern="\d{5}(-\d{4})?" placeholder="Eg: 00000 or 00000-0000" required>
+                        <input type="text" class="form-control" id="zipcode" pattern="\d{5}(-\d{4})?" placeholder="Eg: 00000 or 00000-0000"required>
                     </div>
                 </div>
             </div>
@@ -94,34 +91,32 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <label for="phone">Phone Number</label>
-                        <input type="tel" class="form-control" name="phone" pattern="[0-9]{10}" placeholder="Eg: 1234567890" required>
+                        <input type="tel" class="form-control" id="phone" pattern="[0-9]{10}" placeholder="Eg: 1234567890" required>
                     </div>
                     <div class="col-lg-6">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" name="email" placeholder="e-mail" required>
+                        <input type="email" class="form-control" id="email" placeholder="e-mail" required>
                     </div>
                 </div>
             </div>
-        </div>
+        
 
-
-
-        <div class="sell-car-info">
+            <div class="sell-car-info">
             <span class="span-decor"></span>
             <h3>Car details</h3>
             <div class="form-group">
                 <div class="row">
                     <div class="col-lg-4 col-sm-6">
                         <label for="make">Make</label>
-                        <input type="text" class="form-control" name="make" placeholder="Eg: Shelby" required>
+                        <input type="text" class="form-control" id="make" placeholder="Eg: Shelby" required>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <label for="model">Model</label>
-                        <input type="text" class="form-control" name="model" placeholder="Eg: Cobra 427" required>
+                        <input type="text" class="form-control" id="model" placeholder="Eg: Cobra 427" required>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <label for="model-year">Model Year</label>
-                        <input type="text" class="form-control" name="model_year" placeholder="Eg: 1966" required>
+                        <input type="text" class="form-control" id="model-year" placeholder="Eg: 1966" required>
                     </div>
                 </div>
             </div>
@@ -130,15 +125,15 @@
                 <div class="row">
                     <div class="col-lg-4 col-sm-6">
                         <label for="engine">Engine</label>
-                        <input type="text" class="form-control" name="engine" placeholder="Eg: 4.7L Ford V8" required>
+                        <input type="text" class="form-control" id="engine" placeholder="Eg: 4.7L Ford V8" required>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <label for="transmission">Transmission</label>
-                        <input type="text" class="form-control" name="transmission" placeholder="Manual" required>
+                        <input type="text" class="form-control" id="transmission" placeholder="Manual" required>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <label for="milage">Milage</label>
-                        <input type="number" class="form-control" name="milage" placeholder="KM" required>
+                        <input type="number" class="form-control" id="milage" placeholder="KM" required>
                     </div>
                 </div>
             </div>
@@ -147,7 +142,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-sm-6">
                         <label for="body-type">Body Type</label>
-                        <select class="form-control" name="body_type">
+                        <select class="form-control" id="body-type">
                             <option selected value="" disabled>--Select--</option>
                             <option value="Hatchback">Hatchback</option>
                             <option value="Sedan">Sedan</option>
@@ -160,7 +155,7 @@
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <label for="drivetrain">Drivetrain</label>
-                        <select class="form-control" name="drivetrain">
+                        <select class="form-control" id="drivetrain">
                             <option selected value="" disabled>--Select--</option>
                             <option value="Front-Wheel Drive">Front-Wheel Drive</option>
                             <option value="Rear-Wheel Drive">Rear-Wheel Drive</option>
@@ -171,7 +166,7 @@
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <label for="modifications">Any Modifications</label>
-                        <select class="form-control" name="modifications">
+                        <select class="form-control" id="modifications">
                             <option selected value="" disabled>--Select--</option>
                             <option value="Yes">Yes</option>
                             <option value="No">No</option>
@@ -185,15 +180,15 @@
                 <div class="row">
                     <div class="col-lg-4 col-sm-6">
                         <label for="exterior-color">Exterior Color</label>
-                        <input type="text" class="form-control" name="exterior_color" required>
+                        <input type="text" class="form-control" id="exterior-color" required>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <label for="interior-color">Interior Color</label>
-                        <input type="text" class="form-control" name="interior_color" required>
+                        <input type="text" class="form-control" id="interior-color" required>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <label for="previous-owners">Previous Owners</label>
-                        <input type="number" class="form-control" name="previous_owners" required>
+                        <input type="number" class="form-control" id="previous-owners" required>
                     </div>
                 </div>
             </div>
@@ -202,13 +197,13 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <label for="features">Noteworthy Options/Features</label>
-                        <textarea name="features" rows="5" cols="80" class="form-control"></textarea>
+                        <textarea id="features" rows="5" cols="80" class="form-control"></textarea>
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
 
-        <div class="sell-car-info">
+            <div class="sell-car-info">
             <span class="span-decor"></span>
             <h3>Photos</h3>
             <div class="form-group">
@@ -251,6 +246,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <button type="Submit" class="btn btn-large btn-primary sell-car-submit" name="button">Submit</button>
-    </form>
+            </div>
+            <button type="Submit" class="btn btn-large btn-primary sell-car-submit" name="button">Submit</button>
+        </form>
