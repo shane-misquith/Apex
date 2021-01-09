@@ -394,3 +394,107 @@ footer {
     font-size: 0.875rem;
     text-align: center;
 }
+
+/* vehicle details section */
+.vehicle-name, .table-section, .image-preview {
+  background-color: #222;
+  color: #fff;
+}
+.table-section {
+  padding: 5% 20%;
+}
+
+table, .detials-highlights {
+  margin-bottom: 5%;
+}
+table {
+  border: 1px solid #fff;
+}
+th {
+  width: 37.5rem;
+  background-color: #000;
+}
+td {
+  width: 50rem;
+}
+th, td {
+    font-family: 'Poppins', sans-serif;
+}
+
+th,td {
+  border-bottom: 1px solid #fff;
+  padding: 0.5rem 1rem;
+}
+
+.contact-button {
+  font-size: 1.1rem;
+  padding: 8px 5%;
+  background: #ca0000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.contact-button:hover {
+  background: #fff;
+  color: #000;
+}
+
+
+.image-preview {
+  margin: 0;
+  padding: 0 5%;
+  align-items: center;
+}
+
+.image-preview img {
+  width: 100%;
+}
+.image-selection-col {
+  padding: 10px;
+}
+
+
+.image-selection-col img {
+  width: 100%;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.image-selection-col img:hover {
+  opacity: 1;
+}
+
+
+.image-selection-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.col-col {
+  padding: 5% 0;
+}
+.vehicle-name {
+  padding: 1% 5%;
+}
+.vehicle-name h2, .table-section h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+/* Buy Car Page CSS */
+.buy-car-section {
+  background-color: #333333;
+  padding: 1px; /* to account for margin collapsing due to child margin */
+}
+.buy-car-row {
+  margin: 40px;
+}
+
+.buy-car-img {
+  height: 300px;
+  width: auto;
+  max-width: 100%;
+}

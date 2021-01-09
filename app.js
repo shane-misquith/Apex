@@ -22,6 +22,10 @@ app.get("/sign-up", (req, res)=>{
     res.render("sign_up");
 });
 
+app.get("/buy_car", (req, res)=>{
+    res.render("buy_car");
+});
+
 app.get("/sell_car", (req, res)=>{
     res.render("sell_car");
 });
