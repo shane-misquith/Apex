@@ -396,7 +396,6 @@ footer {
 }
 
 /* vehicle details section */
-/* CAUTION: DO NOT CHANGE ANYTHING HERE( NO MATTER WHAT(ESPECIALLY RIDHUN)) */
 .vehicle-name, .table-section, .image-preview {
   background-color: #222;
   color: #fff;
@@ -485,5 +484,17 @@ th,td {
   font-weight: 600;
 }
 
-/* CAUTION: DO NOT CHANGE ANYTHING HERE( NO MATTER WHAT(ESPECIALLY RIDHUN)) */
-/* vehicle details section */
+/* Buy Car Page CSS */
+.buy-car-section {
+  background-color: #333333;
+  padding: 1px; /* to account for margin collapsing due to child margin */
+}
+.buy-car-row {
+  margin: 40px;
+}
+
+.buy-car-img {
+  height: 300px;
+  width: auto;
+  max-width: 100%;
+}
