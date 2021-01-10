@@ -396,6 +396,7 @@ footer {
 }
 
 /* vehicle details section */
+/* CAUTION: DO NOT CHANGE ANYTHING HERE( NO MATTER WHAT(ESPECIALLY RIDHUN)) */
 .vehicle-name, .table-section, .image-preview {
   background-color: #222;
   color: #fff;
@@ -426,7 +427,7 @@ th,td {
   padding: 0.5rem 1rem;
 }
 
-.contact-button {
+.contact-button, .remove-ad-button button {
   font-size: 1.1rem;
   padding: 8px 5%;
   background: #ca0000;
@@ -436,7 +437,7 @@ th,td {
   text-transform: uppercase;
 }
 
-.contact-button:hover {
+.contact-button:hover, .remove-ad-button button:hover {
   background: #fff;
   color: #000;
 }
@@ -530,4 +531,55 @@ th,td {
   font-weight: 500;
   margin: 5px 0 0;
   color: #fff;
+}
+
+/* remove ads page */
+.remove-ad-section {
+  background: #222;
+  min-height: 500px;
+  color: #fff;
+  padding: 5% 10%;
+}
+
+.remove-ad {
+  background: #000;
+  border-radius: 10px;
+  padding: 1% 1%;
+  margin-bottom: 3%;
+}
+
+.remove-car-picture img {
+  border-radius: 10px;
+  width: 70%;
+}
+
+.remove-car-details {
+  padding-top: 4%;
+}
+
+.remove-ad-button {
+  padding-top: 4%;
+}
+
+.remove-ad-button button {
+  margin-left: 55%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .remove-ad-section {
+    min-height: 125rem;
+  }
+  .remove-car-picture img {
+    position: relative;
+    left: 28%;
+    width: 40%;
+  }
+  .remove-car-details {
+    text-align: center;
+  }
+  .remove-ad-button {
+    padding: 0;
+    position: relative;
+    right: 15%;
+  }
 }
