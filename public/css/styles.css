@@ -485,16 +485,49 @@ th,td {
 }
 
 /* Buy Car Page CSS */
+.buy-car-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  margin-left: 10%;
+  padding: 3% 0 0 0;
+  text-transform: uppercase;
+}
+
 .buy-car-section {
   background-color: #333333;
   padding: 1px; /* to account for margin collapsing due to child margin */
 }
+
 .buy-car-row {
-  margin: 40px;
+  margin: 40px 10%;
+}
+
+.buy-car-a {
+  /* border: 2px #fff solid; */
+  margin: 20px auto;
+}
+
+.buy-car-a:hover {
+  text-decoration: none;
+  border: 2px #ca0000 solid;
+}
+
+.buy-car-col {
+  background-color: #000;
+  max-width: 300px;
+  padding: 20px;
 }
 
 .buy-car-img {
-  height: 300px;
+  height: 200px;
   width: auto;
   max-width: 100%;
+}
+
+.buy-car-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  margin: 5px 0 0;
+  color: #fff;
 }
