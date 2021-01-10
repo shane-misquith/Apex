@@ -64,6 +64,11 @@ app.post("/sell_car", (req, res)=>{
 });
 
 
+app.get("/detail_view", (req, res)=>{
+    res.render("detail_view");
+});
+
+
 app.listen(3000, ()=>{
     console.log("Server started on port 3000....");
 });
