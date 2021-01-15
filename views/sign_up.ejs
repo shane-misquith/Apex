@@ -4,15 +4,14 @@
       <h1 class="login-signup-title signup-title-specific">Signup</h1>
       <div class="row login-signup-content">
         <div class="col signup-content">
-          <form action="index.html" method="post">
+          <form action="/sign-up" method="post">
             <div class="form-group">
-              <label for="email">Email address</label>
-              <input type="email" class="form-control" id="email" aria-describedby="email-help">
-              <small id="email-help" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
+              <label for="Username">Username</label>
+              <input type="text" class="form-control" name="username" aria-describedby="email-help">
+            </div>  
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" class="form-control" id="password">
+              <input type="password" class="form-control" name="password">
             </div>
             <button type="submit" class="btn btn-lg first-button signup-button "><i class="fas fa-lock"></i> Sign up</button>
             <a href="/login" class="back-to-login">Back to login</a>
