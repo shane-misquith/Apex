@@ -404,6 +404,9 @@ footer {
 .table-section {
   padding: 5% 20%;
 }
+.h3-price {
+  margin-bottom: 3%;
+}
 
 table, .detials-highlights {
   margin-bottom: 5%;
