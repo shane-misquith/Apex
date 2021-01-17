@@ -604,5 +604,18 @@ td {
 }
 /* Card */
 .card {
-	border: 5px solid black;
+	border: 0 0 1px 0 solid #ca0000;
+	background: #000;
+}
+.card-view-button button {
+	font-size: 1.1rem;
+	padding: 8px 5%;
+	background: #ca0000;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+}
+.card-view-card button:hover {
+	background: #fff;
+	color: #000;
 }
