@@ -2,66 +2,18 @@
   <h1 class="buy-car-title">Cars for Sale</h1>
   <section class="buy-car-section">
     <div class="row buy-car-row">
-      <a href="#" class="buy-car-a">
-        <div class="col-lg-3 col-md-4 col-sm-6 buy-car-col">
-          <img src="images/car7.jpg" alt="Image not Loaded" class="buy-car-img">
-          <h2 class="buy-car-name">Car 7</h2>
-        </div>
-      </a>
-      <a href="#" class="buy-car-a">
-        <div class="col-lg-3 col-md-4 col-sm-6 buy-car-col">
-          <img src="images/car7.jpg" alt="Image not Loaded" class="buy-car-img">
-          <h2 class="buy-car-name">Car 7</h2>
-        </div>
-      </a>
-      <a href="#" class="buy-car-a">
-        <div class="col-lg-3 col-md-4 col-sm-6 buy-car-col">
-          <img src="images/car7.jpg" alt="Image not Loaded" class="buy-car-img">
-          <h2 class="buy-car-name">Car 7</h2>
-        </div>
-      </a>
-      <a href="#" class="buy-car-a">
-        <div class="col-lg-3 col-md-4 col-sm-6 buy-car-col">
-          <img src="images/car7.jpg" alt="Image not Loaded" class="buy-car-img">
-          <h2 class="buy-car-name">Car 7</h2>
-        </div>
-      </a>
-      <a href="#" class="buy-car-a">
-        <div class="col-lg-3 col-md-4 col-sm-6 buy-car-col">
-          <img src="images/car7.jpg" alt="Image not Loaded" class="buy-car-img">
-          <h2 class="buy-car-name">Car 7</h2>
-        </div>
-      </a>
-      <a href="#" class="buy-car-a">
-        <div class="col-lg-3 col-md-4 col-sm-6 buy-car-col">
-          <img src="images/car7.jpg" alt="Image not Loaded" class="buy-car-img">
-          <h2 class="buy-car-name">Car 7</h2>
-        </div>
-      </a>
-      <a href="#" class="buy-car-a">
-        <div class="col-lg-3 col-md-4 col-sm-6 buy-car-col">
-          <img src="images/car7.jpg" alt="Image not Loaded" class="buy-car-img">
-          <h2 class="buy-car-name">Car 7</h2>
-        </div>
-      </a>
-      <a href="#" class="buy-car-a">
-        <div class="col-lg-3 col-md-4 col-sm-6 buy-car-col">
-          <img src="images/car7.jpg" alt="Image not Loaded" class="buy-car-img">
-          <h2 class="buy-car-name">Car 7</h2>
-        </div>
-      </a>
-      <a href="#" class="buy-car-a">
-        <div class="col-lg-3 col-md-4 col-sm-6 buy-car-col">
-          <img src="images/car7.jpg" alt="Image not Loaded" class="buy-car-img">
-          <h2 class="buy-car-name">Car 7</h2>
-        </div>
-      </a>
-      <a href="#" class="buy-car-a">
-        <div class="col-lg-3 col-md-4 col-sm-6 buy-car-col">
-          <img src="images/car7.jpg" alt="Image not Loaded" class="buy-car-img">
-          <h2 class="buy-car-name">Car 7</h2>
-        </div>
-      </a>
+      <%for(var i=0; i<post.length; i++){  %>
+        <div class="card   bg-dark border-light mb-3" style="width: 16rem;">
+          <img class="card-img-top" src="images/car7.jpg" alt="Card image cap">
+          <div class="card-body ">
+            <h2 class="card-title text-light"><%=post[i].model%></h2>
+            <h5 class="card-text text-light">Model Year: <%=post[i].model_year%> Mileage: <%=post[i].milage%> KM</h5>
+            <h5 class="card-text text-light">Price : <span style="color:green">$ <%=post[i].price%></span> </h5>
+            <a href="/<%=post[i].model%>" class="btn btn-primary  btn-danger">View</a>
+          </div>
+        </div>   
+      <%}%>
+        
     </div>
   </section>
 <%- include('footer'); %>

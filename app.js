@@ -99,7 +99,10 @@ app.post("/sign-up", (req, res) => {
 });
 
 app.get("/buy_car", (req, res) => {
-	res.render("buy_car");
+	Car.find({}, (err, collection) => {
+		console.log(collection[0].model_year);
+		res.render("buy_car", { post: collection });
+	});
 });
 
 app.get("/sell_car", (req, res) => {
@@ -148,8 +151,19 @@ app.post("/sell_car", (req, res) => {
 	res.redirect("/");
 });
 
-app.get("/detail_view", (req, res) => {
+app.get("/buy_car/:car", (req, res) => {
+	const car_id = req.params.car;
+
 	res.render("detail_view");
+});
+
+app.get("/posts/:post_name", (req, res) => {
+	const postName = req.params.post_name;
+	posts.forEach((post) => {
+		if (post.title === postName) {
+			res.render("post", { post: post });
+		}
+	});
 });
 
 app.get("/remove_ad", (req, res) => {
