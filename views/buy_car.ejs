@@ -4,15 +4,14 @@
     <div class="row buy-car-row">
       <%for(var i=0; i<post.length; i++){  %>
         <div class="card mb-3" style="width: 16rem;">
-          <img class="card-img-top" src="images/car7.jpg" alt="Card image cap">
+          <img class="card-img-top" src="/images/car7.jpg" alt="Card image cap">
           <div class="card-body ">
-            <h2 class="card-title text-light"><%=post[i].model_year%> <%=post[i].model%></h2>
-            <h5 class="card-text text-light">Price : <span>$ <%=post[i].price%></span> </h5>
-            <a href="/<%=post[i].model%>" class="btn card-view-button">View</a>
+            <h2 class="card-title text-light"><%=post[i].model%> <%=post[i].model_year%></h2>
+            <h5 class="card-text text-light">$ <%=post[i].price%> </h5>
+            <a href="/detail_view/<%=post[i]._id%>" >View</a>
           </div>
         </div>
       <%}%>
-
     </div>
   </section>
 <%- include('footer'); %>

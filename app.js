@@ -98,11 +98,18 @@ app.post("/sign-up", (req, res) => {
 	});
 });
 
-app.get("/buy_car", (req, res) => {
-	Car.find({}, (err, collection) => {
-		// console.log(collection[0].model_year);
-		res.render("buy_car", { post: collection });
-	});
+app.get("/buy_car/:b_ty", (req, res) => {
+	const b_ty = req.params.b_ty;
+	if (b_ty == "all") {
+		Car.find({}, (err, collection) => {
+			res.render("buy_car", { post: collection });
+		});
+	} else {
+		Car.find({ body_type: b_ty }, (err, collection) => {
+			if (b_ty == "Station%20Wagon") b_ty = "Station Wagon";
+			res.render("buy_car", { post: collection });
+		});
+	}
 });
 
 app.get("/sell_car", (req, res) => {
@@ -151,23 +158,13 @@ app.post("/sell_car", (req, res) => {
 	res.redirect("/");
 });
 
-app.get("/buy_car/:car", (req, res) => {
-	res.render("detail_car");
+app.get("/detail_view/:car", (req, res) => {
+	const car_id = req.params.car;
+	User.findOne({ "car._id": car_id }, (err, carDetail) => {
+		console.log(carDetail);
+		res.render("detail_view", { carInfo: carDetail });
+	});
 });
-
-// const car_id = req.params.car;
-// User.findOne({ "car._id": car_id }, (err, car_detail) => {
-// 	res.render("detail_view", { car_details: car_detail });
-// });
-
-// app.get("/posts/:post_name", (req, res) => {
-// 	const postName = req.params.post_name;
-// 	posts.forEach((post) => {
-// 		if (post.title === postName) {
-// 			res.render("post", { post: post });
-// 		}
-// 	});
-// });
 
 app.get("/remove_ad", (req, res) => {
 	res.render("remove_ad");

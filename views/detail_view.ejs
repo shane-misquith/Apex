@@ -40,66 +40,51 @@
 <section class="table-section">
   <div class="details-table">
     <div class="h3-price">
-      <h3>Price: $<span id="price"></span> </h3>
+      <h3>Price: $<span id="price">carInfo.car.price</span> </h3>
     </div>
     <table align="center">
       <div class="row">
         <tr>
           <th>Make</th>
-          <td>ford</td>
+          <td><%=carInfo.car.make%></td>
           <th>Engine</th>
-          <td>2.3L Turbocharged I4</td>
+          <td><%=carInfo.car.engine%></td>
         </tr>
-
         <tr>
           <th>Model</th>
-          <td>focus rs</td>
+          <td><%=carInfo.car.model%></td>
           <th>Drivetrain</th>
-          <td>4WD/AWD</td>
+          <td><%=carInfo.car.drivetrain%></td>
         </tr>
         <tr>
           <th>Model Year</th>
-          <td>2016</td>
+          <td><%=carInfo.car.model_year%></td>
           <th>Transmission</th>
-          <td>Manual (6-Speed)</td>
+          <td><%=carInfo.car.transmission%></td>
         </tr>
         <tr>
           <th>Milage</th>
-          <td>50000</td>
+          <td><%=carInfo.car.milage%></td>
           <th>Body Type</th>
-          <td>hatchback</td>
+          <td><%=carInfo.car.body_type%></td>
         </tr>
         <tr>
           <th>Any Modifications</th>
-          <td>Yes</td>
+          <td><%=carInfo.car.any_mod%></td>
           <th>Exterior Color</th>
-          <td>Black</td>
+          <td><%=carInfo.car.ext_col%></td>
         </tr>
         <tr>
           <th>Previous Owners</th>
-          <td>1</td>
+          <td><%=carInfo.car.prev_own%></td>
           <th>Interior Color</th>
-          <td>Charcoal Black</td>
+          <td><%=carInfo.car.int_col%></td>
         </tr>
     </table>
   </div>
   <div class="detials-highlights">
     <h3>Highlights</h3>
-    <p>THIS... is a 1994 Honda NSX, finished in Neutron Pearl White with a black leather interior.
-
-      This Japanese-market NSX was recently imported to the U.S. from Japan by the selling dealer.
-      The seller reports that this NSX is not currently registered or titled in the U.S. However, it comes with the Japanese export certificate (U.S. title equivalent), and the importation documents including the declaration, NHTSA, EPA exemptions,
-      U.S. Customs clearance, and entry summary for the buyer to register the car; photos of the supplied documentation can be viewed in the gallery. California buyers should note that the car is not currently CARB compliant; it's up to the buyer to
-      make sure the car will be emissions and registration-compliant in their specific state.
-      The odometer on this NSX reads in metric units and indicates approximately 76,000 kilometers, or roughly 47,500 miles.
-      This NSX was features in a full video review on Doug DeMuro's YouTube channel, as shown below in the "Videos" section.
-      Service prior to the car's import to the U.S. is said to have included replacement of fluids and filters as well as the rear brake pads. Documentation for services performed in Japan is said to date back to when the car was new and will be
-      included in the sale.
-      The seller notes that this NSX's transmission — number J4A3-3000087 — falls outside the range for the well-documented snap ring failure.
-      According to the selling dealer, the sole modification to this NSX is the addition of TEIN coilovers.
-      The Honda NSX — sold as an Acura in the U.S. — was a groundbreaking mid-engined sports car that showcased Honda's engineering prowess like no car before. Developed with considerable input from Formula One world champion Aryton Senna, the
-      original NSX has earned a deserved reputation for providing a pure, perfectly balanced driving experience both on-road and on-track.
-      Power comes from a 3.0-liter V6, which produces 276 horsepower and 217 lb-ft of torque. It sends power to the rear wheels via a 5-speed manual transmission.</p>
+    <p><%=carInfo.car.feature%></p>
   </div>
   <div class="details-button ">
     <button type="button" name="button" class="contact-button">Contact Seller</button>
