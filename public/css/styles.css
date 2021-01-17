@@ -515,7 +515,7 @@ td {
 }
 
 .buy-car-section {
-	background-color: #333333;
+	background-color: #222;
 	padding: 1px; /* to account for margin collapsing due to child margin */
 }
 
