@@ -40,7 +40,7 @@
 <section class="table-section">
   <div class="details-table">
     <div class="h3-price">
-      <h3>Price: $<span id="price">carInfo.car.price</span> </h3>
+      <h3>Price: $<span id="price"> <%=carInfo.car.price%></span> </h3>
     </div>
     <table align="center">
       <div class="row">
@@ -96,24 +96,24 @@
       Seller Details
     </div>
     <div class="popup-content">
-      <h5>Name: Dick Van Dyke</h5>
+      <h5>Name: <%=carInfo.userInfo.name%></h5>
       <div class="row">
         <div class="col-lg-6">
-          <h5>State: North Dakota</h5>
+          <h5>State: <%=carInfo.userInfo.state%></h5>
         </div>
         <div class="col-lg-6">
-          <h5>City: Fargo</h5>
+          <h5>City: <%=carInfo.userInfo.city%></h5>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-6">
-          <h5>Zip Code: 578690</h5>
+          <h5>Zip Code: <%=carInfo.userInfo.zipcode%></h5>
         </div>
         <div class="col-lg-6">
-          <h5>Phone: 1234567890</h5>
+          <h5>Phone: <%=carInfo.userInfo.phone%></h5>
         </div>
       </div>
-      <h5>Email: something@something.com</h5>
+      <h5>Email: <%=carInfo.userInfo.email%></h5>
     </div>
   </div>
   </div>

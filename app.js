@@ -54,6 +54,7 @@ const userDetailSchema = new mongoose.Schema({
 });
 
 const carSchema = new mongoose.Schema({
+	price: Number,
 	make: "String",
 	model: "String",
 	model_year: Number,
@@ -104,7 +105,7 @@ app.post("/login", (req, res) => {
 					console.log(cur_usr);
 					res.redirect("/");
 				}
-			}
+			} else console.log("wrong  password");
 		}
 	});
 });
@@ -127,11 +128,12 @@ app.post("/sign-up", (req, res) => {
 app.get("/buy_car/:b_ty", (req, res) => {
 	const b_ty = req.params.b_ty;
 	if (b_ty == "all") {
-		Car.find({}, (err, collection) => {
+		User.find({}, (err, collection) => {
+			console.log(collection);
 			res.render("buy_car", { post: collection });
 		});
 	} else {
-		Car.find({ body_type: b_ty }, (err, collection) => {
+		User.find({ "car.body_type": b_ty }, (err, collection) => {
 			if (b_ty == "Station%20Wagon") b_ty = "Station Wagon";
 			res.render("buy_car", { post: collection });
 		});
@@ -175,22 +177,6 @@ app.get("/display", (req, res) => {
 	});
 });
 
-app.post("/upload", upload.array("myFile"), (req, res) => {
-	// upload(req, res, (err) => {
-	// if (!err) {
-	// 	const img1 = new photo({
-	// 		img: "/uploads/images/" + req.file.filename,
-	// 	});
-	// 	img1.save((err) => {
-	// 		if (err) console.log(err);
-	// 		else res.redirect("/");
-	// 	});
-	console.log(req.files);
-	// }
-	// });
-});
-
-//
 app.post("/sell_car", upload.array("myFile"), (req, res) => {
 	const user_detail = new userDetail({
 		name: req.body.name,
@@ -206,6 +192,7 @@ app.post("/sell_car", upload.array("myFile"), (req, res) => {
 	});
 
 	const car = new Car({
+		price: req.body.price,
 		make: req.body.make,
 		model: req.body.model,
 		model_year: req.body.model_year,
