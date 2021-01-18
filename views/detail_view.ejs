@@ -87,7 +87,35 @@
     <p><%=carInfo.car.feature%></p>
   </div>
   <div class="details-button ">
-    <button type="button" name="button" class="contact-button">Contact Seller</button>
+    <div class="center">
+        <button type="button" name="button" class="contact-button" onclick="openContact()">Contact Seller</button>
+    </div>
+    <div class="popup-overlay" onclick="closeContact()"></div>
+  <div class="popup">
+    <div class="popup-header">
+      Seller Details
+    </div>
+    <div class="popup-content">
+      <h5>Name: Dick Van Dyke</h5>
+      <div class="row">
+        <div class="col-lg-6">
+          <h5>State: North Dakota</h5>
+        </div>
+        <div class="col-lg-6">
+          <h5>City: Fargo</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <h5>Zip Code: 578690</h5>
+        </div>
+        <div class="col-lg-6">
+          <h5>Phone: 1234567890</h5>
+        </div>
+      </div>
+      <h5>Email: something@something.com</h5>
+    </div>
+  </div>
   </div>
 </section>
 <%- include('footer'); %>
