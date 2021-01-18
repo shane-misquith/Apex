@@ -1,36 +1,36 @@
 <%- include('header'); %>
 <section class="vehicle-name">
-  <h2><span id="vehicle-year">2016</span><span> </span><span id="vehicle-make">Ford</span><span> </span><span id="vehicle-model">Focus RS</span></h2>
+  <h2><span id="vehicle-year"><%=carInfo.car.model_year%></span><span> </span><span id="vehicle-make"><%=carInfo.car.make%></span><span> </span><span id="vehicle-model"><%=carInfo.car.model%></span></h2>
 </section>
 
 <section class="image-preview">
   <div class="row">
     <div class="col-lg-8 col-md-4 col-sm-4 image-container">
-      <img src="https://media.carsandbids.com/cdn-cgi/image/width=1800,quality=70/87e54a954ed0bbe92e3ae67af8b8ca7e3ef3b676/photos/IG6CulagnHS.jpg?t=160918142780" id="expandedImg">
+      <img src="<%=carInfo.img.img1%>" id="expandedImg">
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-col">
       <div class="row image-selection-row">
         <div class="col-lg-6 image-selection-col">
-          <img src="https://media.carsandbids.com/cdn-cgi/image/width=1800,quality=70/87e54a954ed0bbe92e3ae67af8b8ca7e3ef3b676/photos/IG6CulagnHS.jpg?t=160918142780" alt="Nature" onclick="myFunction(this);">
+          <img src="<%=carInfo.img.img1%>" alt="Nature" onclick="myFunction(this);">
         </div>
         <div class="col-lg-6 image-selection-col">
-          <img src="https://media.carsandbids.com/cdn-cgi/image/width=1800,quality=70/87e54a954ed0bbe92e3ae67af8b8ca7e3ef3b676/photos/OFEZvliGtIV.jpg?t=160867213310" alt="Snow" onclick="myFunction(this);">
-        </div>
-      </div>
-      <div class="row image-selection-row">
-        <div class="col-lg-6 image-selection-col">
-          <img src="https://media.carsandbids.com/cdn-cgi/image/width=1800,quality=70/87e54a954ed0bbe92e3ae67af8b8ca7e3ef3b676/photos/TPQ1KIKlyk.jpg?t=160918231942" onclick="myFunction(this);">
-        </div>
-        <div class="col-lg-6 image-selection-col">
-          <img src="https://media.carsandbids.com/cdn-cgi/image/width=1800,quality=70/87e54a954ed0bbe92e3ae67af8b8ca7e3ef3b676/photos/C5GEvCRoE_.jpg?t=160918209055" onclick="myFunction(this);">
+          <img src="<%=carInfo.img.img2%>" alt="Snow" onclick="myFunction(this);">
         </div>
       </div>
       <div class="row image-selection-row">
         <div class="col-lg-6 image-selection-col">
-          <img src="https://media.carsandbids.com/cdn-cgi/image/width=1800,quality=70/87e54a954ed0bbe92e3ae67af8b8ca7e3ef3b676/photos/NpkRPxMkYr.jpg?t=160918209180" onclick="myFunction(this);">
+          <img src="<%=carInfo.img.img3%>" onclick="myFunction(this);">
         </div>
         <div class="col-lg-6 image-selection-col">
-          <img src="https://media.carsandbids.com/cdn-cgi/image/width=1800,quality=70/87e54a954ed0bbe92e3ae67af8b8ca7e3ef3b676/photos/gyB2fC0DlG.jpg?t=160918229730" onclick="myFunction(this);">
+          <img src="<%=carInfo.img.img4%>" onclick="myFunction(this);">
+        </div>
+      </div>
+      <div class="row image-selection-row">
+        <div class="col-lg-6 image-selection-col">
+          <img src="<%=carInfo.img.img5%>" onclick="myFunction(this);">
+        </div>
+        <div class="col-lg-6 image-selection-col">
+          <img src="<%=carInfo.img.img6%>" onclick="myFunction(this);">
         </div>
       </div>
     </div>

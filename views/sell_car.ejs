@@ -8,7 +8,7 @@
 
 
     <!-- seller information section of the form -->
-    <form action="/sell_car" method="post">
+    <form action="/sell_car" method="post" enctype="multipart/form-data">
         <div class="sell-car-info">
             <span class="span-decor"></span>
             <h3>Your Info</h3>
@@ -225,7 +225,7 @@
                     <div class="col-md-4 col-sm-6 drop-photo-cols">
                         <div class="drop-zone">
                             <span class="drop-zone__prompt">Drop photo here or click here to upload</span>
-                            <input type="file" name="myFile" class="drop-zone__input">
+                            <input type="file" name="myFile" accept="image/*" class="drop-zone__input">
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6 drop-photo-cols">

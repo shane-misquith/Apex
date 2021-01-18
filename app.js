@@ -1,5 +1,21 @@
 const express = require("express");
 const md5 = require("md5");
+const multer = require("multer");
+const path = require("path");
+
+const storage = multer.diskStorage({
+	destination: "public/uploads/images",
+	filename: (req, file, cb) => {
+		cb(
+			null,
+			file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+		);
+	},
+});
+
+const upload = multer({
+	storage: storage,
+});
 
 //mongoose
 const mongoose = require("mongoose");
@@ -18,6 +34,15 @@ app.set("view engine", "ejs");
 
 let cur_usr = "";
 //User-login &sign_up
+const imageSchema = new mongoose.Schema({
+	img1: String,
+	img2: String,
+	img3: String,
+	img4: String,
+	img5: String,
+	img6: String,
+});
+const Image = new mongoose.model("Image", imageSchema);
 
 const userDetailSchema = new mongoose.Schema({
 	name: String,
@@ -49,6 +74,7 @@ const userSchema = new mongoose.Schema({
 	password: String,
 	userInfo: userDetailSchema,
 	car: carSchema,
+	img: imageSchema,
 });
 
 const userDetail = new mongoose.model("userDetail", userDetailSchema);
@@ -116,7 +142,56 @@ app.get("/sell_car", (req, res) => {
 	res.render("sell_car");
 });
 
-app.post("/sell_car", (req, res) => {
+app.get("/detail_view/:car", (req, res) => {
+	const car_id = req.params.car;
+	User.findOne({ "car._id": car_id }, (err, carDetail) => {
+		console.log(carDetail);
+		res.render("detail_view", { carInfo: carDetail });
+	});
+});
+
+app.get("/remove_ad", (req, res) => {
+	res.render("remove_ad");
+});
+
+app.listen(3000, () => {
+	console.log("Server started on port 3000....");
+});
+
+// Test
+app.get("/upload", (req, res) => {
+	res.render("upload");
+});
+
+app.get("/display", (req, res) => {
+	photo.find({}, (err, found) => {
+		if (err) console.log(err);
+		else {
+			if (found) {
+				console.log(found[0].img);
+				res.render("display", { found: found });
+			}
+		}
+	});
+});
+
+app.post("/upload", upload.array("myFile"), (req, res) => {
+	// upload(req, res, (err) => {
+	// if (!err) {
+	// 	const img1 = new photo({
+	// 		img: "/uploads/images/" + req.file.filename,
+	// 	});
+	// 	img1.save((err) => {
+	// 		if (err) console.log(err);
+	// 		else res.redirect("/");
+	// 	});
+	console.log(req.files);
+	// }
+	// });
+});
+
+//
+app.post("/sell_car", upload.array("myFile"), (req, res) => {
 	const user_detail = new userDetail({
 		name: req.body.name,
 		state: req.body.state,
@@ -126,10 +201,8 @@ app.post("/sell_car", (req, res) => {
 		email: req.body.email,
 	});
 	user_detail.save();
-	console.log(user_detail);
 	User.updateOne({ username: cur_usr }, { userInfo: user_detail }, (err) => {
 		if (err) console.log(err);
-		else console.log("success");
 	});
 
 	const car = new Car({
@@ -153,23 +226,22 @@ app.post("/sell_car", (req, res) => {
 	console.log(car);
 	User.updateOne({ username: cur_usr }, { car: car }, (err) => {
 		if (err) console.log(err);
-		else console.log("success");
+	});
+
+	const img_arr = req.files;
+
+	const images = new Image({
+		img1: "/uploads/images/" + req.files[0].filename,
+		img2: "/uploads/images/" + req.files[1].filename,
+		img3: "/uploads/images/" + req.files[2].filename,
+		img4: "/uploads/images/" + req.files[3].filename,
+		img5: "/uploads/images/" + req.files[4].filename,
+		img6: "/uploads/images/" + req.files[5].filename,
+	});
+	images.save();
+	console.log(images);
+	User.updateOne({ username: cur_usr }, { img: images }, (err) => {
+		if (err) console.log(err);
 	});
 	res.redirect("/");
-});
-
-app.get("/detail_view/:car", (req, res) => {
-	const car_id = req.params.car;
-	User.findOne({ "car._id": car_id }, (err, carDetail) => {
-		console.log(carDetail);
-		res.render("detail_view", { carInfo: carDetail });
-	});
-});
-
-app.get("/remove_ad", (req, res) => {
-	res.render("remove_ad");
-});
-
-app.listen(3000, () => {
-	console.log("Server started on port 3000....");
 });
