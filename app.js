@@ -100,9 +100,7 @@ app.post("/login", (req, res) => {
 		else {
 			if (foundUser) {
 				if (password === foundUser.password) {
-					console.log(cur_usr);
 					cur_usr = username;
-					console.log(cur_usr);
 					res.redirect("/");
 				}
 			} else console.log("wrong  password");
@@ -129,7 +127,6 @@ app.get("/buy_car/:b_ty", (req, res) => {
 	const b_ty = req.params.b_ty;
 	if (b_ty == "all") {
 		User.find({}, (err, collection) => {
-			console.log(collection);
 			res.render("buy_car", { post: collection });
 		});
 	} else {
@@ -158,23 +155,6 @@ app.get("/remove_ad", (req, res) => {
 
 app.listen(3000, () => {
 	console.log("Server started on port 3000....");
-});
-
-// Test
-app.get("/upload", (req, res) => {
-	res.render("upload");
-});
-
-app.get("/display", (req, res) => {
-	photo.find({}, (err, found) => {
-		if (err) console.log(err);
-		else {
-			if (found) {
-				console.log(found[0].img);
-				res.render("display", { found: found });
-			}
-		}
-	});
 });
 
 app.post("/sell_car", upload.array("myFile"), (req, res) => {

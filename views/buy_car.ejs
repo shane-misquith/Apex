@@ -1,25 +1,31 @@
 <%- include('header'); %>
-  <h1 class="buy-car-title">Cars for Sale</h1>
-  <section class="buy-car-section">
-    <%var i=0%>
-    <%for(var j=0; j<Math.ceil(post.length/4); j++){  %>
-    <div class="row buy-car-row card-deck ">
-      <%for(var k=0; (k<4 && i<post.length);( i++,k++)){  %>
-        <div class="card mb-3 " style="width: 16rem;">
-          <img class="card-img-top" src="<%=post[i].img.img1%>" alt="Card image cap">
-          <div class="card-body ">
-            <h2 class="card-title text-light"><%=post[i].car.model%></h2>
-            <h5 class="card-text text-light"><%=post[i].car.make%> </h5>
-            <h5 class="card-title text-light"> <%=post[i].car.model_year%></h5>
-            <p class="card-text text-light">$ <%=post[i].car.price%></p>
-            <a href="/detail_view/<%=post[i].car._id%>" >
-              <button type="button" class="btn btn-danger">View</button>
-            </a>
-          </div>
-        </div>
+<h1 class="buy-car-title">Cars for Sale</h1>
+<div class="buy-car-section">
+  <div class="container" style="margin-top:3em;">
+      <div class="row">
+
+      <%for(var i=0; i<post.length; i++){%>
+          <div class="col-lg-3 col-md-6 col-sm-12 mb-4 ">
+              <div class="card ">
+              <img src="<%=post[i].img.img1%>" class="card-img-top" style="max-height:500px;"alt="images">
+              <div class="card-body">
+                  <h6 class="card-title text-light"><%=post[i].car.model%></h6>
+                  <h7 class="card-text text-light"><%=post[i].car.make%></h7></br>
+                  <h7 class="card-title text-light"><%=post[i].car.model_year%></h7></br></br>
+                  
+                  <p class="card-text text-light">$ <%=post[i].car.price%></p>
+              </div>
+              <div class="card-footer">
+                <a href="/detail_view/<%=post[i].car._id%>" >
+                  <button type="button" class="btn btn-danger">View</button>
+                </a>
+              </div>
+              </div>
+          </div> 
+        
         <%}%>
-    </div>
-    <%}%>
-  </section>
-  
+
+      </div>
+  </div>
+</div>
 <%- include('footer'); %>
