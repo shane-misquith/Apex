@@ -2,9 +2,9 @@
   <h1 class="buy-car-title">Cars for Sale</h1>
   <section class="buy-car-section">
     <%var i=0%>
-    <%for(var j=0; j<Math.ceil(post.length/2); j++){  %>
+    <%for(var j=0; j<Math.ceil(post.length/4); j++){  %>
     <div class="row buy-car-row card-deck ">
-      <%for(var k=0; (k<2 && i<post.length);( i++,k++)){  %>
+      <%for(var k=0; (k<4 && i<post.length);( i++,k++)){  %>
         <div class="card mb-3 " style="width: 16rem;">
           <img class="card-img-top" src="<%=post[i].img.img1%>" alt="Card image cap">
           <div class="card-body ">
