@@ -101,6 +101,7 @@ app.post("/login", (req, res) => {
 			if (foundUser) {
 				if (password === foundUser.password) {
 					cur_usr = username;
+					console.log(cur_usr);
 					res.redirect("/");
 				}
 			} else console.log("wrong  password");
@@ -190,7 +191,6 @@ app.post("/sell_car", upload.array("myFile"), (req, res) => {
 		feature: req.body.features,
 	});
 	car.save();
-	console.log(car);
 	User.updateOne({ username: cur_usr }, { car: car }, (err) => {
 		if (err) console.log(err);
 	});
