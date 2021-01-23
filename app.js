@@ -1,7 +1,9 @@
 const express = require("express");
-const md5 = require("md5");
 const multer = require("multer");
 const path = require("path");
+const session = require("express-session");
+const passport = require("passport");
+const passportLocalMongoose = require("passport-local-mongoose");
 
 const storage = multer.diskStorage({
 	destination: "public/uploads/images",
@@ -13,75 +15,95 @@ const storage = multer.diskStorage({
 	},
 });
 
-const upload = multer({
-	storage: storage,
-});
+const upload = multer({ storage: storage });
 
+//express
+const app = express();
+
+//body-parser
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+//EJS
+app.use(express.static("public"));
+app.set("view engine", "ejs");
+
+app.use(
+	session({
+		secret: "Apex systems",
+		resave: false,
+		saveUninitialized: false,
+	})
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 //mongoose
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost:27017/apexDB", {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 });
-//express
-const app = express();
-//body-parser
-app.use(express.json());
-app.use(express.urlencoded());
-//EJS
-app.use(express.static("public"));
-app.set("view engine", "ejs");
 
 let cur_usr = "";
-//User-login &sign_up
-const imageSchema = new mongoose.Schema({
-	img1: String,
-	img2: String,
-	img3: String,
-	img4: String,
-	img5: String,
-	img6: String,
+
+const { Image, Car, userDetail, User } = require("./models/schemas");
+// const imageSchema = new mongoose.Schema({
+// 	img1: String,
+// 	img2: String,
+// 	img3: String,
+// 	img4: String,
+// 	img5: String,
+// 	img6: String,
+// });
+
+// const userDetailSchema = new mongoose.Schema({
+// 	name: String,
+// 	state: String,
+// 	city: String,
+// 	zipcode: Number,
+// 	phone: Number,
+// 	email: String,
+// });
+
+// const carSchema = new mongoose.Schema({
+// 	price: Number,
+// 	make: "String",
+// 	model: "String",
+// 	model_year: Number,
+// 	engine: "String",
+// 	transmission: "String",
+// 	milage: Number,
+// 	body_type: "String",
+// 	drivetrain: "String",
+// 	any_mod: "String",
+// 	ext_col: "String",
+// 	int_col: "String",
+// 	prev_own: Number,
+// 	feature: "String",
+// });
+
+// const userSchema = new mongoose.Schema({
+// 	username: String,
+// 	password: String,
+// 	userInfo: userDetailSchema,
+// 	car: carSchema,
+// 	img: imageSchema,
+// });
+// userSchema.plugin(passportLocalMongoose);
+
+// const Image = new mongoose.model("Image", imageSchema);
+// const Car = new mongoose.model("Car", carSchema);
+// const userDetail = new mongoose.model("userDetail", userDetailSchema);
+// const User = new mongoose.model("User", userSchema);
+
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+app.use(function (req, res, next) {
+	res.locals.isAuth = req.isAuthenticated();
+	next();
 });
-const Image = new mongoose.model("Image", imageSchema);
-
-const userDetailSchema = new mongoose.Schema({
-	name: String,
-	state: String,
-	city: String,
-	zipcode: Number,
-	phone: Number,
-	email: String,
-});
-
-const carSchema = new mongoose.Schema({
-	price: Number,
-	make: "String",
-	model: "String",
-	model_year: Number,
-	engine: "String",
-	transmission: "String",
-	milage: Number,
-	body_type: "String",
-	drivetrain: "String",
-	any_mod: "String",
-	ext_col: "String",
-	int_col: "String",
-	prev_own: Number,
-	feature: "String",
-});
-
-const userSchema = new mongoose.Schema({
-	username: String,
-	password: String,
-	userInfo: userDetailSchema,
-	car: carSchema,
-	img: imageSchema,
-});
-
-const userDetail = new mongoose.model("userDetail", userDetailSchema);
-const Car = new mongoose.model("Car", carSchema);
-const User = new mongoose.model("User", userSchema);
-
 //routes
 app.get("/", (req, res) => {
 	res.render("main");
@@ -92,21 +114,26 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-	const username = req.body.username;
-	const password = md5(req.body.password);
+	const user = new User({
+		username: req.body.username,
+		password: req.body.password,
+	});
 
-	User.findOne({ username: username }, (err, foundUser) => {
-		if (err) console.log(err);
-		else {
-			if (foundUser) {
-				if (password === foundUser.password) {
-					cur_usr = username;
-					console.log(cur_usr);
-					res.redirect("/");
-				}
-			} else console.log("wrong  password");
+	req.login(user, (err) => {
+		if (err) {
+			console.log(err);
+		} else {
+			passport.authenticate("local")(req, res, () => {
+				res.redirect("/");
+			});
 		}
 	});
+});
+
+app.get("/logout", (req, res) => {
+	req.logout();
+	req.session.destroy();
+	res.redirect("/");
 });
 
 app.get("/sign-up", (req, res) => {
@@ -114,14 +141,23 @@ app.get("/sign-up", (req, res) => {
 });
 
 app.post("/sign-up", (req, res) => {
-	const newUser = new User({
-		username: req.body.username,
-		password: md5(req.body.password),
-	});
-	newUser.save((err) => {
-		if (err) console.log(err);
-		else res.redirect("/");
-	});
+	User.register(
+		{ username: req.body.username },
+		req.body.password,
+		(err, user) => {
+			if (err) console.log(err);
+			else {
+				passport.authenticate("local")(req, res, () => {
+					res.redirect("/");
+				});
+			}
+		}
+	);
+});
+
+app.get("/logout", (req, res) => {
+	req.logout();
+	res.redirect("/");
 });
 
 app.get("/buy_car/:b_ty", (req, res) => {
@@ -139,7 +175,8 @@ app.get("/buy_car/:b_ty", (req, res) => {
 });
 
 app.get("/sell_car", (req, res) => {
-	res.render("sell_car");
+	if (req.isAuthenticated()) res.render("sell_car");
+	else res.redirect("/login");
 });
 
 app.get("/detail_view/:car", (req, res) => {
@@ -168,9 +205,13 @@ app.post("/sell_car", upload.array("myFile"), (req, res) => {
 		email: req.body.email,
 	});
 	user_detail.save();
-	User.updateOne({ username: cur_usr }, { userInfo: user_detail }, (err) => {
-		if (err) console.log(err);
-	});
+	User.updateOne(
+		{ username: req.user.username },
+		{ userInfo: user_detail },
+		(err) => {
+			if (err) console.log(err);
+		}
+	);
 
 	const car = new Car({
 		price: req.body.price,
@@ -191,7 +232,7 @@ app.post("/sell_car", upload.array("myFile"), (req, res) => {
 		feature: req.body.features,
 	});
 	car.save();
-	User.updateOne({ username: cur_usr }, { car: car }, (err) => {
+	User.updateOne({ username: req.user.username }, { car: car }, (err) => {
 		if (err) console.log(err);
 	});
 
@@ -207,7 +248,7 @@ app.post("/sell_car", upload.array("myFile"), (req, res) => {
 	});
 	images.save();
 	console.log(images);
-	User.updateOne({ username: cur_usr }, { img: images }, (err) => {
+	User.updateOne({ username: req.user.username }, { img: images }, (err) => {
 		if (err) console.log(err);
 	});
 	res.redirect("/");
