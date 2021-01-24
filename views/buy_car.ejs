@@ -16,10 +16,16 @@
                       
                       <p class="card-text text-light">$ <%=post[i].car.price%></p>
                   </div>
-                  <div class="card-footer">
+                  <div class="card-footer ">
                     <a href="/detail_view/<%=post[i].car._id%>" >
                       <button type="button" class="btn btn-danger">View</button>
                     </a>
+                    <% if (user_ps === post[i].username) { %>
+                      <a href="/remove_ad" >
+                        <button type="button"  class="btn btn-danger float-right">Remove</button>
+                      </a>
+                    <% } %>
+
                   </div>
                   </div>
               </div> 
