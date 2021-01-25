@@ -122,7 +122,7 @@ app.get("/buy_car/:b_ty", (req, res) => {
 	} else {
 		User.find({ "car.body_type": b_ty }, (err, collection) => {
 			if (b_ty == "Station%20Wagon") b_ty = "Station Wagon";
-			res.render("buy_car", { post: collection });
+			res.render("buy_car", { post: collection, user_ps: user_ps });
 		});
 	}
 });
