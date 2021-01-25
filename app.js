@@ -45,61 +45,12 @@ mongoose.connect("mongodb://localhost:27017/apexDB", {
 	useUnifiedTopology: true,
 });
 
-let cur_usr = "";
-
 const { Image, Car, userDetail, User } = require("./models/schemas");
-// const imageSchema = new mongoose.Schema({
-// 	img1: String,
-// 	img2: String,
-// 	img3: String,
-// 	img4: String,
-// 	img5: String,
-// 	img6: String,
-// });
-
-// const userDetailSchema = new mongoose.Schema({
-// 	name: String,
-// 	state: String,
-// 	city: String,
-// 	zipcode: Number,
-// 	phone: Number,
-// 	email: String,
-// });
-
-// const carSchema = new mongoose.Schema({
-// 	price: Number,
-// 	make: "String",
-// 	model: "String",
-// 	model_year: Number,
-// 	engine: "String",
-// 	transmission: "String",
-// 	milage: Number,
-// 	body_type: "String",
-// 	drivetrain: "String",
-// 	any_mod: "String",
-// 	ext_col: "String",
-// 	int_col: "String",
-// 	prev_own: Number,
-// 	feature: "String",
-// });
-
-// const userSchema = new mongoose.Schema({
-// 	username: String,
-// 	password: String,
-// 	userInfo: userDetailSchema,
-// 	car: carSchema,
-// 	img: imageSchema,
-// });
-// userSchema.plugin(passportLocalMongoose);
-
-// const Image = new mongoose.model("Image", imageSchema);
-// const Car = new mongoose.model("Car", carSchema);
-// const userDetail = new mongoose.model("userDetail", userDetailSchema);
-// const User = new mongoose.model("User", userSchema);
 
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
 app.use(function (req, res, next) {
 	res.locals.isAuth = req.isAuthenticated();
 	next();
@@ -161,15 +112,17 @@ app.get("/logout", (req, res) => {
 });
 
 app.get("/buy_car/:b_ty", (req, res) => {
+	let user_ps = "";
+	if (req.isAuthenticated()) user_ps = req.user.username;
 	const b_ty = req.params.b_ty;
 	if (b_ty == "all") {
 		User.find({}, (err, collection) => {
-			res.render("buy_car", { post: collection });
+			res.render("buy_car", { post: collection, user_ps: user_ps });
 		});
 	} else {
 		User.find({ "car.body_type": b_ty }, (err, collection) => {
 			if (b_ty == "Station%20Wagon") b_ty = "Station Wagon";
-			res.render("buy_car", { post: collection });
+			res.render("buy_car", { post: collection, user_ps: user_ps });
 		});
 	}
 });
@@ -177,22 +130,6 @@ app.get("/buy_car/:b_ty", (req, res) => {
 app.get("/sell_car", (req, res) => {
 	if (req.isAuthenticated()) res.render("sell_car");
 	else res.redirect("/login");
-});
-
-app.get("/detail_view/:car", (req, res) => {
-	const car_id = req.params.car;
-	User.findOne({ "car._id": car_id }, (err, carDetail) => {
-		console.log(carDetail);
-		res.render("detail_view", { carInfo: carDetail });
-	});
-});
-
-app.get("/remove_ad", (req, res) => {
-	res.render("remove_ad");
-});
-
-app.listen(3000, () => {
-	console.log("Server started on port 3000....");
 });
 
 app.post("/sell_car", upload.array("myFile"), (req, res) => {
@@ -212,7 +149,6 @@ app.post("/sell_car", upload.array("myFile"), (req, res) => {
 			if (err) console.log(err);
 		}
 	);
-
 	const car = new Car({
 		price: req.body.price,
 		make: req.body.make,
@@ -231,6 +167,7 @@ app.post("/sell_car", upload.array("myFile"), (req, res) => {
 
 		feature: req.body.features,
 	});
+
 	car.save();
 	User.updateOne({ username: req.user.username }, { car: car }, (err) => {
 		if (err) console.log(err);
@@ -252,4 +189,45 @@ app.post("/sell_car", upload.array("myFile"), (req, res) => {
 		if (err) console.log(err);
 	});
 	res.redirect("/");
+});
+
+app.get("/detail_view/:car", (req, res) => {
+	const car_id = req.params.car;
+	User.findOne({ "car._id": car_id }, (err, carDetail) => {
+		res.render("detail_view", { carInfo: carDetail });
+	});
+});
+
+app.get("/remove_ad", (req, res) => {
+	const user_id = req.user._id;
+	User.findOne({ _id: user_id }, (err, post) => {
+		res.render("remove_ad", { post: post });
+	});
+});
+
+app.post("/remove_ad", (req, res) => {
+	const user_id = req.user._id;
+	User.findOne({ _id: user_id }, (err, post) => {
+		User.updateOne(
+			{ _id: user_id },
+			{ $unset: { userInfo: "", car: "", img: "" } },
+			(err, post) => {
+				console.log(post);
+			}
+		);
+		userDetail.deleteMany({ _id: post.img._id }, (err, post) => {
+			console.log("sucesss");
+		});
+		Car.deleteMany({ _id: post.img._id }, (err, post) => {
+			console.log("sucesss");
+		});
+		Image.deleteMany({ _id: post.img._id }, (err, post) => {
+			console.log("sucesss");
+		});
+		res.redirect("/");
+	});
+});
+
+app.listen(3000, () => {
+	console.log("Server started on port 3000....");
 });

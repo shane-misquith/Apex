@@ -2,17 +2,20 @@
 <!-- remove ad section -->
   <section class="remove-ad-section">
     <div class="remove-ad">
-      <div class="row">
-        <div class="col-lg-3 remove-car-picture">
-          <img src="https://media.carsandbids.com/cdn-cgi/image/width=1800,quality=70/87e54a954ed0bbe92e3ae67af8b8ca7e3ef3b676/photos/IG6CulagnHS.jpg?t=160918142780" alt="">
-        </div>
-        <div class="col-lg-6 remove-car-details">
-          <h2><span id="vehicle-year">2016</span><span> </span><span id="vehicle-make">Ford</span><span> </span><span id="vehicle-model">Focus RS</span></h2>
-        </div>
-        <div class="col-lg-3 remove-ad-button">
-          <button type="button" name="button"><i class="fas fa-trash-alt"></i><span> </span>Remove</button>
-        </div>
-      </div>
+      <form action="/remove_ad" method="post" enctype="multipart/form-data">
+          <div class="row">       
+              <div class="col-lg-3 remove-car-picture">
+                <img src="<%=post.img.img1%>" alt="">
+              </div>
+              <div class="col-lg-6 remove-car-details">
+                <h2><span id="vehicle-year"><%=post.car.model_year%></span><span> </span><span id="vehicle-make"><%=post.car.make%></span><span> </span><span id="vehicle-model">Focus RS</span></h2>
+                <h5>Seller: <%=post.userInfo.name%></h5>
+              </div>
+              <div class="col-lg-3 remove-ad-button">
+                <button type="Submit" name="button">Remove</button>
+              </div>           
+          </div>
+      </form>
     </div>
   </section>
 

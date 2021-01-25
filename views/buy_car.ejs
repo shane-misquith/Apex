@@ -13,16 +13,22 @@
                       <h6 class="card-title text-light"><%=post[i].car.model%></h6>
                       <h7 class="card-text text-light"><%=post[i].car.make%></h7></br>
                       <h7 class="card-title text-light"><%=post[i].car.model_year%></h7></br></br>
-                      
+
                       <p class="card-text text-light">$ <%=post[i].car.price%></p>
                   </div>
-                  <div class="card-footer">
+                  <div class="card-footer ">
                     <a href="/detail_view/<%=post[i].car._id%>" >
                       <button type="button" class="btn btn-danger">View</button>
                     </a>
+                    <% if (user_ps === post[i].username) { %>
+                      <a href="/remove_ad" >
+                        <button type="button"  class="btn btn-danger float-right">Remove</button>
+                      </a>
+                    <% } %>
+
                   </div>
                   </div>
-              </div> 
+              </div>
           <%}%>
         <%}%>
 
