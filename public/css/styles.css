@@ -415,6 +415,7 @@ footer {
 	color: #fff;
 }
 .table-section {
+	margin-top: 0;
 	padding: 5% 20%;
 }
 .h3-price {
@@ -559,7 +560,7 @@ body.showLoginForm .popup {
 
 .buy-car-section {
 	background-color: #222;
-	padding: 1px;
+	padding: 1% 7%;
 }
 
 .buy-car-row {
@@ -646,10 +647,9 @@ body.showLoginForm .popup {
 	}
 }
 /* Card */
-.card {
-	border: 0 0 1px 0 solid #ca0000;
+.card-decor {
+	border-bottom: : 1px solid #ca0000;
 	background: #000;
-	border: 1px solid black;
 }
 .card-view-button button {
 	font-size: 1.1rem;
